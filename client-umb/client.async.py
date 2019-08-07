@@ -56,7 +56,7 @@ async def start():
                 ref = payload["ref"].split("/")[2]
             else:
                 logging.info("Not containing ref")
-                continue
+                ref = ''
             # If not specify branches, we accept all
             if branch_name == '' or ref in branch_name.split(","):
                 amqp_props = dict()
