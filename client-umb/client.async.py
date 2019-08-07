@@ -60,7 +60,12 @@ async def start():
             # If not specify branches, we accept all
             if branch_name == '' or ref in branch_name.split(","):
                 amqp_props = dict()
-                amqp_props['subject'] = payload['head_commit']['message']
+                if "head_commit" in payload:
+                    amqp_props['subject'] = payload['head_commit']['message']
+                elif "comment" in payload:
+                    amqp_props['subject'] = payload['comment']['body']
+                else:
+                    amqp_props['subject'] = 'No subject'
                 amqp_message = str(message)
                 producer = AMQProducer(
                     urls=amqp_url,
