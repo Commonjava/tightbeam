@@ -1,5 +1,5 @@
 tornado==4.4.2
-websockets==7.0
+websockets==9.1
 websocket-client==v0.16.0
 requests==2.21.0
 aiohttp==v3.0.1
